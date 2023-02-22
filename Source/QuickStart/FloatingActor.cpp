@@ -24,9 +24,11 @@ void AFloatingActor::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FVector NewLocation = GetActorLocation();
-	float DeltaHeight = (FMath::Sin(RunningTime + DeltaTime) - FMath::Sin(RunningTime));
+
+	float DeltaHeight = (FMath::Sin(RunningTime + DeltaTime * Speed) - FMath::Sin(RunningTime));
 	NewLocation.Z += DeltaHeight * 20.0f;
-	RunningTime += DeltaTime;
+	RunningTime += DeltaTime * Speed;
+
 	SetActorLocation(NewLocation);
 }
 
